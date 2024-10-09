@@ -1,0 +1,336 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+   {% load static %}
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Care HUgs| Responsive Bootstrap 4 Admin Dashboard Template</title>
+      
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+      <link rel="stylesheet" href="{% static 'css/backend-plugin.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/backend.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/remixicon/fonts/remixicon.css' %}">
+      
+      <link rel="stylesheet" href="{% static 'vendor/tui-calendar/tui-calendar/dist/tui-calendar.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css' %}">  </head>
+  <body class=" color-light ">
+    <!-- loader Start -->
+    <div id="loading">
+          <div id="loading-center">
+          </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper" style="margin: 50px 100px;padding:50px;background-color: #F2F5F9;border-radius: 0.5rem;">
+      
+      
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-12 col-lg-12">
+               <div class="iq-card">
+                  <div class="iq-card-header d-flex justify-content-between">
+                     <div class="iq-header-title">
+                        <h4 class="card-title" style="align-items: center;">Registration Form  </h4>
+                     </div>
+                  </div>
+                  <div class="iq-card-body">
+                     <form method="post" enctype="multipart/form-data"  id="form-wizard1" class="text-center mt-4">
+                        {% csrf_token %}
+                        
+                        <input type="hidden" name="step" value="{{ step }}">
+                        <ul id="top-tab-list" class="p-0">
+                           <li class="{% if step == 1 %}active{% endif %}" id="account">
+                              <a href="javascript:void();">
+                              <i class="ri-lock-unlock-line"></i><span>Personal</span>
+                              </a>
+                           </li>
+                           <li class="{% if step == 2 %}active{% endif %}" id="personal">
+                              <a href="javascript:void();">
+                              <i class="ri-user-fill"></i><span>KYC</span>
+                              </a>
+                           </li>
+                           <li class="{% if step == 3 %}active{% endif %}" id="payment">
+                              <a href="javascript:void();">
+                              <i class="ri-camera-fill"></i><span>Image</span>
+                              </a>
+                           </li>
+                           <li class="{% if step == 4 %}active{% endif %}" id="confirm">
+                              <a href="javascript:void();">
+                              <i class="ri-check-fill"></i><span>Finish</span>
+                              </a>
+                           </li>
+                        </ul>
+                        <!-- fieldsets -->
+                        {% if step == 1 %}
+                        <fieldset>
+                           <div class="form-card text-left">
+                              <div class="row">
+                                 <!-- <div class="col-7">
+                                    <h3 class="mb-4">Personal Information:</h3>
+                                 </div> -->
+                                 <div class="col-12">
+                                    <h2 class="steps">Step 1 - 4</h2>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.name.id_for_label }}">Username: *</label>
+                                       {{ form_personal.name }}
+                                       <!-- <input type="text" class="form-control" name="name" placeholder="First Name" /> -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.last_name.id_for_label }}">Full Name: *</label>
+                                       <input type="text" class="form-control" name="lname" placeholder="Last Name" />
+                                       <!-- {{ form_personal.last_name }} -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label  for="{{ form_personal.age.id_for_label }}">Age *</label>
+                                       {{ form_personal.age }}
+                                       <!-- <input type="text" class="form-control" name="age" placeholder="Contact No." /> -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.age.id_for_label }}">Gender: *</label>
+                                       {{ form_personal.gender }}
+                                       <!-- <input type="text" class="form-control" name="gender" placeholder="gender" /> -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.address.id_for_label }}">Address: *</label>
+                                       {{ form_personal.address }}
+                                       <!-- <input type="text" class="form-control" name="address" placeholder=" Address" /> -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.city.id_for_label }}">City: *</label>
+                                       {{ form_personal.city }}
+                                       <!-- <input type="text" class="form-control" name="city" placeholder="City" /> -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.phone_number.id_for_label }}">Contact No.: *</label>
+                                       {{ form_personal.phone_number }}
+                                       <!-- <input type="text" class="form-control" name="phone_number" placeholder="Contact No." /> -->
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                       <label for="{{ form_personal.alternate_phone_number.id_for_label }}">Alternate Contact No.: *</label>
+                                       {{ form_personal.alternate_phone_number }}
+                                       <!-- <input type="text" class="form-control" name="alternate_phone_number" placeholder="Alternate Contact No." /> -->
+                                    </div>
+                                 </div>
+                              </div>
+
+                              
+                           </div>
+                           
+                           <button type="" name="next"  class="btn btn-primary next action-button float-right" value="Next" >Next</button>
+                        </fieldset>
+                        
+                        {% elif step == 2 %}
+                        <fieldset>
+                           <div class="form-card text-left">
+                              <div class="row">
+                                 <div class="col-7">
+                                    <h3 class="mb-4">Services & Verification:</h3>
+                                 </div>
+                                 <div class="col-5">
+                                    <h2 class="steps">Step 2 - 4</h2>
+                                 </div>
+                              </div>   
+                             <div class="row">
+                                <div class="col-md-6">
+                                   <div class="form-group">
+                                      <label for="{{ form_services.service_types.id_for_label }}">Select Services: *</label>
+                                      {{ form_services.service_types }} 
+                                      <!-- <select id="service_types"  class="form-control" name="service_types" multiple>
+                                       {% for i in services %}
+                                       <option >{{i.name}}</option>
+                                       {% endfor %}
+                                     </select> -->
+                                      
+                                   </div>
+                                </div>
+                                <div class="col-md-6">
+                                   <div class="form-group">
+                                      <label for="{{ form_services.experience.id_for_label }}">Experience: *</label>
+                                      {{ form_services.experience }}
+                                      <!-- <input type="text" class="form-control" name="experience" placeholder="Last Name" /> -->
+                                   </div>
+                                </div>
+                                <div class="col-md-6">
+                                   <div class="form-group">
+                                      <label  for="{{ form_services.availability.id_for_label }}">Availability *</label>
+                                      {{ form_services.availability }}
+                                      <!-- <input type="text" class="form-control" name="availability" placeholder="Contact No." /> -->
+                                   </div>
+                                </div>
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form_services.hourly_salary.id_for_label }}">Salary per Hour:</label>
+                                    {{ form_services.hourly_salary }}
+                                    <!-- <input type="number" class="form-control" name="hourly_salary" accept="image/*"> -->
+                                 </div></div>
+                              
+                                
+                                
+                             </div>
+
+
+
+                             <div class="row">
+                              <div class="col-7">
+                                 <h3 class="mb-4">Bank Details:</h3>
+                              </div>
+                           </div>   
+                          <div class="row">
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                   <label for="{{ form_services.aadhar_number.id_for_label }}">Aadhar No: *</label>
+                                   {{ form_services.aadhar_number }}
+                                   <!-- <input type="text" class="form-control" name="aadhar_number" placeholder="First Name" /> -->
+                                </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                   <label for="{{ form_services.bank_account.id_for_label }}">Bank Account No: *</label>
+                                   {{ form_services.bank_account }}
+                                   <!-- <input type="text" class="form-control" name="bank_account" placeholder="Last Name" /> -->
+                                </div>
+                             </div>
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                   <label for="{{ form_services.ifsc_code.id_for_label }}">IFSC Code *</label>
+                                   {{ form_services.ifsc_code }}
+                                   <!-- <input type="text" class="form-control" name="ifsc_code" placeholder="Contact No." /> -->
+                                </div>
+                             </div>
+                             <div class="col-md-6">
+                             <div class="form-group">
+                              <label for="{{ form_services.govt_id.id_for_label }}">Upload Govt Id:</label>
+                              {{ form_services.govt_id }}
+                              <!-- <input type="file" class="form-control" name="govt_id" accept="image/*"> -->
+                           </div></div>
+                                
+                          </div>
+                          
+
+                           </div>
+                           
+                           <button type="" name="next" class="btn btn-primary next action-button float-right" value="Next" >Next</button>
+                           <button type="" name="previous" class="btn btn-dark previous action-button-previous float-right mr-3" value="Previous" >Previous</button>
+                        </fieldset>
+                    
+                        {% elif step == 3 %}
+                        <fieldset>
+                           <div class="form-card text-left">
+                              <div class="row">
+                                 <div class="col-7">
+                                    <h3 class="mb-4">Image:</h3>
+                                 </div>
+      
+           
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                       <label for="{{ form_image.about_me.id_for_label }}">Tell about You: *</label>
+                                       {{ form_image.about_me }}
+                                       <!-- <input type="textarea" class="form-control" name="about_me" placeholder="First Name" /> -->
+                                    </div>
+                                 </div>
+                                 
+                                 
+                              </div>
+                              
+                              <div class="form-group">
+                                 <label for="{{ form_image.profile_picture.id_for_label }}">Upload Your Photo:</label>
+                                 {{ form_image.profile_picture }}
+                                 <!-- <input type="file" class="form-control" name="pic" accept="image/*"> -->
+                              </div>
+                              
+                              
+                           </div>
+                           <button type="" name="next" class="btn btn-primary next action-button float-right" value="Submit" >Submit</button>
+                           <button type="" name="previous" class="btn btn-dark previous action-button-previous float-right mr-3" value="Previous" >Previous</button>
+                        </fieldset>
+                    
+                        {% elif step == 4 %}
+                        <fieldset >
+                           <div class="form-card">
+                              <div class="row">
+                                 <div class="col-7">
+                                    <h3 class="mb-4 text-left">Finish:</h3>
+                                 </div>
+                                 <div class="col-5">
+                                    <h2 class="steps">Step 4 - 4</h2>
+                                 </div>
+                              </div>
+                              <br><br>
+                              <h2 class="text-success text-center"><strong>SUCCESS !</strong></h2>
+                              <br>
+                              <div class="row justify-content-center">
+                                 <div class="col-1"> <img src="{% static 'images/page-img/img-success.png' %}" class="fit-image" alt="fit-image"> </div>
+                              </div>
+                              <br><br>
+                              <div class="row justify-content-center">
+                                 <div class="col-7 text-center">
+                                    <h5 class="purple-text text-center">You Have Successfully Signed Up! Login to your Account</h5>
+                                    <button type="submit"><a href="{% url 'loginprovider' %}">Login</a></button>
+                                 </div>
+                              </div>
+                           </div>
+                        </fieldset>
+                        {% endif %}
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+    </div>
+   
+  
+
+   </div>
+
+   
+    
+  
+  
+    <!-- Backend Bundle JavaScript -->
+    <script src="{% static 'js/backend-bundle.min.js' %}"></script>
+    
+    <!-- Table Treeview JavaScript -->
+    <script src="{% static 'js/table-treeview.js' %}"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script src="{% static 'js/customizer.js' %}"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script async src="{% static 'js/chart-custom.js' %}"></script>
+    <!-- Chart Custom JavaScript -->
+    <script async src="{% static 'js/slider.js' %}"></script>
+    
+    <!-- app JavaScript -->
+    <script src="{% static 'js/app.js' %}"></script>
+    
+    <script src="{% static 'vendor/moment.min.js' %}"></script>
+  </body>
+</html>

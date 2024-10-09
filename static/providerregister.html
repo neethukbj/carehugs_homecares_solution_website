@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Signup Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom Styles */
+        /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    margin: 0;
+    color: #555;
+}
+/*
+#multi-step-form-container {
+    position:absolute;
+
+    margin-top: 5rem;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+    #multi-step-form-container {
+        top: 15vh;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 80%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #multi-step-form-container {
+        top: 10vh;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 90%;
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #multi-step-form-container {
+        top: 5vh;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 100%;
+        padding: 1rem;
+    }
+} 
+.container {
+  display: grid;
+  place-items: center;
+  height: 110vh;
+  width: 700px; /* Adjust height as needed 
+}
+
+#multi-step-form-container {
+  position: absolute;
+  max-width: 1000px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+} */
+#multi-step-form-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0); /* Center the container */
+    max-width: 800px;
+    width: 100%; /* Make the container responsive */
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #multi-step-form-container {
+        padding: 1.5rem; /* Adjust padding for smaller screens */
+        max-width: 90%; /* Adjust the width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    #multi-step-form-container {
+        padding: 1rem; /* Further reduce padding for very small screens */
+        max-width: 100%; /* Make the container take up full width */
+    }
+}
+.text-center {
+    text-align: center;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pl-0 {
+    padding-left: 0;
+}
+
+/* Button Styling */
+.button {
+    padding: 0.7rem 1.5rem;
+    border: 1px solid #4361ee;
+    background-color: #4361ee;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3b55d9;
+}
+
+.submit-btn {
+    border: 1px solid #0e9594;
+    background-color: #0e9594;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0c7a7b;
+}
+
+.mt-3 {
+    margin-top: 2rem;
+}
+
+/* Step Form Styling */
+.d-none {
+    display: none;
+}
+
+.form-step {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    background-color: #f9f9f9;
+}
+
+.font-normal {
+    font-weight: normal;
+}
+
+/* Progress Bar Styling */
+ul.form-stepper {
+    counter-reset: section;
+    margin-bottom: 3rem;
+    padding: 0;
+}
+
+ul.form-stepper .form-stepper-circle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    color: #863333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+ul.form-stepper .form-stepper-circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-stepper-horizontal {
+    justify-content: space-between;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+ul.form-stepper > li:not(:last-of-type) {
+    margin-bottom: 0.625rem;
+    -webkit-transition: margin-bottom 0.4s;
+    -o-transition: margin-bottom 0.4s;
+    transition: margin-bottom 0.4s;
+}
+.form-stepper-horizontal > li:not(:last-of-type) {
+    margin-bottom: 0 !important;
+}
+.form-stepper-horizontal li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.form-stepper-horizontal li:not(:last-child):after {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 1px;
+    content: "";
+    top: 32%;
+}
+
+.form-stepper-horizontal li:after {
+    
+    background-color: #0c365f;
+    
+}
+
+.form-stepper-horizontal li.form-stepper-completed:after {
+    background-color: #0e9594;
+}
+.form-stepper-horizontal li:last-child {
+    flex: unset;
+}
+ul.form-stepper li a .form-stepper-circle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 0;
+    line-height: 1.7rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.38);
+}
+ul.form-stepper li .label {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+/* Active and Completed Steps */
+.form-stepper .form-stepper-active .form-stepper-circle {
+    background-color: #4361ee;
+    color: #b85454;
+}
+
+.form-stepper .form-stepper-active .label {
+    color: #4361ee;
+}
+
+.form-stepper .form-stepper-completed .form-stepper-circle {
+    background-color: #0e9594;
+    color: #3d2b2b;
+}
+
+.form-stepper .form-stepper-completed .label {
+    color: #0e9594;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container mt-5" >
+    <h1>Provider Signup Form</h1>
+    <div class="container" id="multi-step-form-container" style="width: 100%;">
+        <!-- Form Steps / Progress Bar -->
+        <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
+            <!-- Step 1 -->
+            <li class="form-stepper-active text-center form-stepper-list" step="1">
+                <a class="mx-2">
+                    <span class="form-stepper-circle">
+                        <span>1</span>
+                    </span>
+                    <div class="label">Basic Information</div>
+                </a>
+            </li>
+            <!-- Step 2 -->
+            <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+                <a class="mx-2">
+                    <span class="form-stepper-circle text-muted">
+                        <span>2</span>
+                    </span>
+                    <div class="label text-muted">Services Offered</div>
+                </a>
+            </li>
+            <!-- Step 3 -->
+            <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
+                <a class="mx-2">
+                    <span class="form-stepper-circle text-muted">
+                        <span>3</span>
+                    </span>
+                    <div class="label text-muted">Verification & Submit</div>
+                </a>
+            </li>
+            <li class="form-stepper-unfinished text-center form-stepper-list" step="4">
+                <a class="mx-2">
+                    <span class="form-stepper-circle text-muted">
+                        <span>4</span>
+                    </span>
+                    <div class="label text-muted">Register</div>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Step Wise Form Content -->
+        <form id="providerSignupForm" name="providerSignupForm" enctype="multipart/form-data" method="POST">
+            <!-- Step 1 Content -->
+            <section id="step-1" class="form-step">
+                <h2 class="font-normal">Basic Information</h2>
+                <div class="mt-3">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+                    <label for="full_name">Age</label>
+                    <input type="number" id="full_name" name="full_name" class="form-control" required>
+                    <label for="full_name">Gender</label>
+                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+
+                    <label for="phone_number" class="mt-3">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" class="form-control" required>
+
+                    <label for="email" class="mt-3">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+
+                    <label for="address" class="mt-3">Address:</label>
+                    <textarea id="address" name="address" class="form-control" rows="3" required></textarea>
+                    <label for="full_name">City:</label>
+                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+                </div>
+                <div class="mt-3">
+                    <button class="button btn-navigate-form-step btn-primary" type="button" step_number="2">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 2 Content, default hidden on page load. -->
+            <section id="step-2" class="form-step d-none">
+                <h2 class="font-normal">Services Offered</h2>
+                <div class="mt-3">
+                    <label for="service_types">Select Services:</label>
+                    <select id="service_types" name="service_types" class="form-control" multiple required>
+                        <option value="cooking">Cooking</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="babysitting">Babysitting</option>
+                        <option value="elderly_help">Elderly Help</option>
+                    </select>
+                    <label for="full_name">Experience:</label>
+                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+
+                    <label for="full_name">Hourly Salary</label>
+                    <input type="number" id="full_name" name="full_name" class="form-control" required>
+
+                    <label for="availability" class="mt-3">Availability:</label>
+                    <select id="availability" name="availability" class="form-control" required>
+                        <option value="full_time">Full Time</option>
+                        <option value="part_time">Part Time</option>
+                        <option value="temporary">Temporary</option>
+                    </select>
+                    
+                </div>
+                <div class="mt-3">
+                    <button class="button btn-navigate-form-step btn-secondary" type="button" step_number="1">Prev</button>
+                    <button class="button btn-navigate-form-step btn-primary" type="button" step_number="3">Next</button>
+                </div>
+            </section>
+
+            <!-- Step 3 Content, default hidden on page load. -->
+            <section id="step-3" class="form-step d-none">
+                <h2 class="font-normal">Verification & Submit</h2>
+                <div class="mt-3">
+                    <label for="aadhar_number">Aadhar Number:</label>
+                    <input type="text" id="aadhar_number" name="aadhar_number" class="form-control" required>
+                    <label for="aadhar_number">Bank Account Number:</label>
+                    <input type="text" id="aadhar_number" name="aadhar_number" class="form-control" required>
+                    <label for="aadhar_number">IFSC CODE:</label>
+                    <input type="text" id="aadhar_number" name="aadhar_number" class="form-control" required>
+                    
+                    <label for="govt_id" class="mt-3">Government ID:</label>
+                    <input type="file" id="govt_id" name="govt_id" class="form-control" required>
+                </div>
+                <div class="mt-3">
+                    <button class="button btn-navigate-form-step btn-secondary" type="button" step_number="2">Prev</button>
+                    <button class="button btn-navigate-form-step btn-primary" type="button" step_number="4">Next</button>
+                </div>
+            </section>
+            <section id="step-4" class="form-step d-none">
+                <h2 class="font-normal">Register</h2>
+                <div class="mt-3">
+                    <label for="profile_picture" class="mt-3">Upload Profile Picture:</label>
+                    <input type="file" id="profile_picture" name="profile_picture" class="form-control" accept="image/*" required>
+                    <label for="aadhar_number">Tell about you! </label>
+                    <input type="textarea" id="aadhar_number" name="aadhar_number" class="form-control" required>
+                    <label for="aadhar_number">Create Password</label>
+                    <input type="text" id="aadhar_number" name="aadhar_number" class="form-control" required>
+                    <label for="aadhar_number">Retype Password</label>
+                    <input type="text" id="aadhar_number" name="aadhar_number" class="form-control" required>
+                </div>
+                <div class="mt-3">
+                    <button class="button btn-navigate-form-step btn-secondary" type="button" step_number="3">Prev</button>
+                    <button class="button submit-btn btn-success" type="submit">Register</button>
+                </div>
+            </section>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    /**
+     * Function to navigate between form steps.
+     * It accepts one parameter: step number.
+     */
+    const navigateToFormStep = (stepNumber) => {
+        // Hide all form steps
+        document.querySelectorAll(".form-step").forEach((formStepElement) => {
+            formStepElement.classList.add("d-none");
+        });
+
+        // Mark all form steps as unfinished
+        document.querySelectorAll(".form-stepper-list").forEach((formStepHeader) => {
+            formStepHeader.classList.add("form-stepper-unfinished");
+            formStepHeader.classList.remove("form-stepper-active", "form-stepper-completed");
+        });
+
+        // Show the current form step
+        document.querySelector("#step-" + stepNumber).classList.remove("d-none");
+
+        // Select and mark the current form step circle as active
+        const formStepCircle = document.querySelector('li[step="' + stepNumber + '"]');
+        formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-completed");
+        formStepCircle.classList.add("form-stepper-active");
+
+        // Mark all previous steps as completed
+        for (let index = 1; index < stepNumber; index++) {
+            const formStepCircle = document.querySelector('li[step="' + index + '"]');
+            if (formStepCircle) {
+                formStepCircle.classList.remove("form-stepper-unfinished", "form-stepper-active");
+                formStepCircle.classList.add("form-stepper-completed");
+            }
+        }
+    };
+
+    /**
+     * Add click event listeners to all navigation buttons.
+     */
+    document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn) => {
+        formNavigationBtn.addEventListener("click", () => {
+            // Get the target step number
+            const stepNumber = parseInt(formNavigationBtn.getAttribute("step_number"));
+
+            // Navigate to the target step
+            navigateToFormStep(stepNumber);
+
+            // Scroll smoothly to the top of the form
+            window.scrollTo({
+                top: document.querySelector("#multi-step-form-container").offsetTop - 20,
+                behavior: "smooth"
+            });
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

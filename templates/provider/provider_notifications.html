@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Care HUgs| Responsive Bootstrap 4 Admin Dashboard Template</title>
+       <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+      
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+      <link rel="stylesheet" href="{% static 'css/backend-plugin.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/backend.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/remixicon/fonts/remixicon.css' %}">
+      
+      <link rel="stylesheet" href="{% static 'vendor/tui-calendar/tui-calendar/dist/tui-calendar.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css' %}">
+      <link rel="stylesheet" href="{% static 'vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css' %}"> 
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    </head>
+    <body class="  ">
+        <!-- loader Start -->
+        <div id="loading">
+              <div id="loading-center">
+              </div>
+        </div>
+        <!-- loader END -->
+        <!-- Wrapper Start -->
+        <div class="wrapper">
+          
+          <div class="iq-sidebar  sidebar-default ">
+              {% include 'provider/sidenav.html' %}
+          </div>      
+          <div class="iq-top-navbar">
+              <div class="iq-navbar-custom">
+                  {% include 'provider/nav.html' %}
+              </div>
+          </div>      
+          <div class="content-page">
+            <div class="container mt-5">
+                <div class="card shadow-none m-0">
+                    <div class="card-body p-0">
+                        <div class="cust-title p-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h5 class="mb-0">Notifications</h5>
+                                <span class="badge badge-danger">{{ messages|length }}</span> <!-- Show the number of unread messages -->
+                            </div>
+                        </div>
+                        <div class="px-3 pt-0 pb-0 sub-card">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="iq-sub-card">
+                                        <div class="media align-items-center cust-card py-3 border-bottom">
+                                            <div class="">
+                                                <img class="avatar-50 rounded-small" src="{% static 'images/user/01.jpg' %}" alt="User Image">
+                                            </div>
+                                            <div class="media-body ml-3">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <h6 class="mb-0">{{ message.text}}</h6> <!-- Shorten message text if needed -->
+                                                    <small class="text-dark"><b>{{ message.created_at|date:"H:i a" }}</b></small>
+                                                </div>
+                                                <small class="mb-0">Booking status: {{ message.status|title }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="text-center py-3">
+                                    <p>No notifications available</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <a class="btn btn-primary btn-block position-relative p-2" href="#">Back to Dashboard</a> <!-- Link to dashboard or another page -->
+                    </div>
+                </div>
+            </div>
+            </div>
+    
+
+</div>
+
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'js/backend-bundle.min.js' %}"></script>
+    
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'js/table-treeview.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'js/customizer.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script async src="{% static 'js/chart-custom.js' %}"></script>
+<!-- Chart Custom JavaScript -->
+<script async src="{% static 'js/slider.js' %}"></script>
+
+<!-- app JavaScript -->
+<script src="{% static 'js/app.js' %}"></script>
+
+<script src="{% static 'vendor/moment.min.js' %}"></script>
+</body>
+</html>

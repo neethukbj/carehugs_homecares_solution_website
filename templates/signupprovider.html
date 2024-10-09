@@ -1,0 +1,215 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registration Provider -p1</h1>
+
+    <form method="post" action="{% url 'providerprofile' %}">
+        {% csrf_token %}
+        <label>Customer</label>
+        <input type="radio" name="entrytype">
+        <label>Provider</label>
+        <input type="radio" name="entrytype">
+        
+
+        <h2>Section 1</h2>
+        <br>
+        <input type="text" placeholder="Name" name="username"><br>
+        <input type="text" placeholder="Age" name="age"><br>
+        <input type="text" placeholder="Gender" name="gender"><br>
+
+        <input type="textarea" placeholder="address" name="address"><br>
+        <input type="text" placeholder="City" name="city"><br>
+        <input type="number" placeholder="Phn number" name="phnno"><br>
+    <p>Profile pic Upload</p>
+    <input type="number" placeholder=" Altternate Phn number" name="altphnno"><br>
+    <input type="textfield" placeholde="Alternate address" name="altaddr"><br>
+
+        <br>
+        <h2>Section 2</h2>
+        <input type="text" placeholder="AAdhar" name="aadharno">
+        <input type="date" placeholder="Date of birth" name="dob"><br>
+        <input type="number" placeholder="BanK Account No" name="acntno">
+        <input type="text" placeholder="IFSC CODE" name="ifsc">
+        <p>Govt Id</p>
+        <input type="textarea" placeholder="Identifications" name="identifications">
+
+        <h2>Section 3</h2>
+        <input type="text" placeholder="experience" name="exp">
+        <input type="number" placeholder="Hourly Salary" name="salary">
+
+        <input type="textarea" placeholder="Health" name="health">
+        <h2>Section 5</h2>
+        <input type="textarea" placeholder="About me" name="about">
+
+        <input type="password" placeholder="Create password" name="password">
+        <input type="password" placeholder="Repeat password" name="password">
+
+        <br>
+        <button type="submit">Register</button> 
+    </form>
+
+    <h2>Login</h2>
+    <form method="post"  action="{% url 'providerprofile' %}">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="username">
+        <input type="password" placeholder="password" name="password">
+        <button type="submit">Login</button>
+
+    </form>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Registration</title>
+    <style>
+        /* Same CSS as before */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="textarea"],
+        input[type="password"],
+        input[type="date"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            let password = document.forms["registrationForm"]["password"].value;
+            let repeatPassword = document.forms["registrationForm"]["repeat_password"].value;
+            if (password !== repeatPassword) {
+                document.getElementById("passwordError").innerText = "Passwords do not match!";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Registration Provider -p1</h1>
+
+    <form name="registrationForm" method="post" action="{% url 'providerprofile' %}" enctype="multipart/form-data" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <div class="form-section">
+            <label>Entry Type</label>
+            <label><input type="radio" name="entrytype" value="customer" required> Customer</label>
+            <label><input type="radio" name="entrytype" value="provider" required> Provider</label>
+        </div>
+
+        <div class="form-section">
+            <h2>Section 1</h2>
+            <input type="text" placeholder="Name" name="username" required><br>
+            <input type="text" placeholder="Age" name="age" required><br>
+            <input type="text" placeholder="Gender" name="gender" required><br>
+            <input type="textarea" placeholder="Address" name="address" required><br>
+            <input type="text" placeholder="City" name="city" required><br>
+            <input type="number" placeholder="Phone Number" name="phnno" required><br>
+            <input type="number" placeholder="Alternate Phone Number" name="altphnno" required><br>
+            <input type="text" placeholder="Alternate Address" name="altaddr" required><br>
+        </div>
+
+        <div class="form-section">
+            <h2>Section 2</h2>
+            <input type="text" placeholder="Aadhar" name="aadharno" required><br>
+            <input type="date" placeholder="Date of Birth" name="dob" required><br>
+            <input type="number" placeholder="Bank Account No" name="acntno" required><br>
+            <input type="text" placeholder="IFSC Code" name="ifsc" required><br>
+            <label>Govt Id</label>
+            <input type="file" name="govtid" required><br>
+            <input type="textarea" placeholder="Identifications" name="identifications" required><br>
+        </div>
+
+        <div class="form-section">
+            <h2>Section 3</h2>
+            <input type="text" placeholder="Experience" name="exp" required><br>
+            <input type="number" placeholder="Hourly Salary" name="salary" required><br>
+            <input type="textarea" placeholder="Health" name="health" required><br>
+        </div>
+
+        <div class="form-section">
+            <h2>Section 4</h2>
+            <input type="textarea" placeholder="About me" name="about" required><br>
+            <input type="password" placeholder="Create password" name="password" required><br>
+            <input type="password" placeholder="Repeat password" name="repeat_password" required><br>
+            <div id="passwordError" class="error"></div>
+        </div>
+
+        <button type="submit">Register</button> 
+    </form>
+
+    <h2>Login</h2>
+    <form method="post" action="{% url 'providerprofile' %}">
+        {% csrf_token %}
+        <input type="text" placeholder="Name" name="username" required><br>
+        <input type="password" placeholder="Password" name="password" required><br>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>
+

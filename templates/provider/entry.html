@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+
+    <div class="main">
+        <div class="container">
+            <div class="sign-up-content">
+                <form method="POST" class="signup-form">
+                    <h2 class="form-title">What type of user are you ?</h2>
+                    <div class="form-radio" >
+                        <input type="radio" name="member_level" value="newbie" id="newbie"  onchange="navigate()" />
+                        <label for="newbie">Client</label>
+
+                        <input type="radio" name="member_level" value="average" id="average" onchange="navigate()" />
+                        <label for="average">Provider</label>             
+                    </div> 
+                      
+                </form>    
+            </div>
+        </div>
+    </div>
+    <style>
+        .form-radio {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Center the items vertically */
+    gap: 10px; /* Add some space between the radio inputs */
+}
+    </style>
+    <script>
+        const clientLoginUrl = "{% url 'loginclient' %}"; // Adjust 'client_login' to your actual URL name
+        const providerLoginUrl = "{% url 'loginprovider' %}"; // Adjust 'provider_login' to your actual URL name
+        function navigate() {
+    const selectedValue = document.querySelector('input[name="member_level"]:checked');
+    if (selectedValue) {
+        if (selectedValue.value === "newbie") {
+            window.location.href = clientLoginUrl; // URL for Client Login Page
+        } else if (selectedValue.value === "average") {
+            window.location.href = providerLoginUrl; // URL for Provider Login Page
+        }
+    }
+}
+
+
+    </script>
+
+    <!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/auth.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

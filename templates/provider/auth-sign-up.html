@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+    <div class="main">
+        <h1>Sign up</h1>
+        <div class="container">
+            <div class="sign-up-content">
+                <form method="POST" class="signup-form" action="{% url 'signupprovider' %}">
+                    {% csrf_token %}
+                    <h2 class="form-title">Signup </h2>
+                    {% if form.errors %}
+                    <ul class="messages">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li class="error-message" style="color: red; list-style-type: none;">
+                                {{ error }}
+                            </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="form-textbox">
+                        <label for="{{ form.username.id_for_label }}">Username</label>
+                        {{ form.username }}
+                        <!-- <input type="text" name="name" id="name" /> -->
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="{{ form.email.id_for_label }}">Email</label>
+                        {{ form.email }}
+                        <!-- <input type="email" name="email" id="email" /> -->
+                    </div>
+                    <div class="form-textbox">
+                        <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                        {{ form.phone_number }}
+                        <!-- <input type="email" name="email" id="email" /> -->
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="{{ form.password.id_for_label }}">Password</label>
+                        {{ form.password }}
+                        <!-- <input type="password" name="pass" id="pass" /> -->
+                    </div>
+                    <div class="form-textbox">
+                        <label for="{{ form.confirm_password.id_for_label }}">Confirm Password</label>
+                        {{ form.confirm_password }}
+                        <!-- <input type="password" name="pass" id="pass" /> -->
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.agree_to_terms }}
+                        <!-- <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" /> -->
+                        <label for="{{ form.agree_to_terms.id_for_label }}" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+
+                    <div class="form-textbox">
+                        <button type="submit" name="submit" id="submit" class="submit" value="Create account" style="width: 100%;" >Sign Up</button>
+                    </div>
+                </form>
+
+                <p class="loginhere">
+                    Already have an account ?<a href="{% url 'loginprovider' %}" class="loginhere-link"> LOGIN</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/auth.js' %}"></script>
+</body>
+</html>

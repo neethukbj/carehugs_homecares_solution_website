@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f2f2f2;
+        border-bottom: 1px solid #ddd;
+    }
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+    .profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .btn {
+        padding: 10px 20px;
+        margin: 10px 5px;
+        cursor: pointer;
+        border: none;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 5px;
+    }
+    .notifications {
+        position: relative;
+    }
+    .notifications .badge {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        padding: 5px 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .hidden {
+        display: none;
+    }
+    .profile-details {
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="profile">
+        <img src="profile-pic.jpg" alt="Profile Picture">
+        <div>
+            <strong>Provider Name</strong><br>
+            <button class="btn" onclick="showProfile()">My Profile</button>
+        </div>
+    </div>
+    <div>
+        <a href="{% url 'logoutprovider' %}"><button class="btn">Logout</button></a>
+        
+    </div>
+    <div class="notifications">
+        <button class="btn">Notifications</button>
+        <div class="badge">3</div>
+    </div>
+</div>
+<h1>Work Orders</h1>
+<table>
+    <tr>
+        <th><button class="btn" onclick="showTable('bookingsTable')">Bookings</button></th>
+        <th><button class="btn" onclick="showTable('pendingsTable')">Pending</button></th>
+        <th><button class="btn" onclick="showTable('completedTable')">Completed</button></th>
+    </tr>
+</table>
+
+<!-- Bookings Table -->
+<table id="bookingsTable" class="hidden">
+    <tr>
+        <th>Date</th>
+        <th>Client Name</th>
+        <th>Work Type</th>
+        <th>Payment Status</th>
+        <th>View Details</th>
+    </tr>
+    <tr>
+        <td>2024-07-30</td>
+        <td>John Doe</td>
+        <td>Cleaning</td>
+        <td>Paid</td>
+        <td><button class="btn">View</button></td>
+    </tr>
+    <!-- Add more rows as needed -->
+</table>
+
+<!-- Pendings Table -->
+<table id="pendingsTable" class="hidden">
+    <tr>
+        <th>Date</th>
+        <th>Client Name</th>
+        <th>Work Type</th>
+        <th>Work Time</th>
+        <th>View Details</th>
+    </tr>
+    <tr>
+        <td>2024-07-30</td>
+        <td>Jane Smith</td>
+        <td>Babysitting</td>
+        <td>2 hours</td>
+        <td><button class="btn">View</button></td>
+    </tr>
+    <!-- Add more rows as needed -->
+</table>
+
+<!-- Completed Table -->
+<table id="completedTable" class="hidden">
+    <tr>
+        <th>Date</th>
+        <th>Client Name</th>
+        <th>Work Type</th>
+        <th>Payment Details</th>
+        <th>View Details</th>
+    </tr>
+    <tr>
+        <td>2024-07-29</td>
+        <td>Michael Brown</td>
+        <td>Elderly Care</td>
+        <td>Paid via PayPal</td>
+        <td><button class="btn">View</button></td>
+    </tr>
+    <!-- Add more rows as needed -->
+</table>
+
+<!-- Profile Details -->
+<div id="profileDetails" class="profile-details hidden">
+    <h2>My Profile</h2>
+    <p><strong>Name:</strong> Provider Name</p>
+    <p><strong>Email:</strong> provider@example.com</p>
+    <p><strong>Phone:</strong> (123) 456-7890</p>
+    <p><strong>Address:</strong> 123 Provider Street, City, Country</p>
+    <!-- Add more personal details as needed -->
+</div>
+
+<script>
+    function showTable(tableId) {
+        // Hide all tables and profile details
+        var tables = document.querySelectorAll('table.hidden');
+        tables.forEach(function(table) {
+            table.style.display = 'none';
+        });
+        document.getElementById('profileDetails').style.display = 'none';
+
+        // Show the selected table
+        document.getElementById(tableId).style.display = 'table';
+    }
+
+    function showProfile() {
+        // Hide all tables
+        var tables = document.querySelectorAll('table.hidden');
+        tables.forEach(function(table) {
+            table.style.display = 'none';
+        });
+
+        // Show the profile details
+        document.getElementById('profileDetails').style.display = 'block';
+    }
+</script>
+    
+</body>
+</html>

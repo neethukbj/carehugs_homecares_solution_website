@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Payment for Booking</h2>
+    <p>Service: {{ booking.service_type.name }}</p>
+    <p>Date: {{ booking.booking_date }}</p>
+    <p>Provider: {{ booking.provider.name }}</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Make Payment</button>
+    </form>
+     
+</body>
+</html>
